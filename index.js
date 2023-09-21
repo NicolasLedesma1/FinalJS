@@ -9,7 +9,7 @@ const persona = {
     edad : edad
 }
 
-console.log(persona);
+console.log(persona); 
 
 const ingresaste = edad >= 18 && edad <=35;
 const ingresaste2 = edad >= 36;
