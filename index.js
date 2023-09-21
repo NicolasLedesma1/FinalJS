@@ -24,19 +24,13 @@ if (edad <= 17 ){
     24: 1.4,
     36: 1.6,
     48: 1.8,
+
   };
-  
+  console.log(tasasInteres);
   if (ingresaste) {
     let tasaInteres = tasasInteres[cuotasDisponibles];
-  
     if (tasaInteres !== undefined) {
-      alert(
-        "¡Felicidades " +
-          persona.nombre +
-          "! Tienes financiación hasta en 48 cuotas con una tasa de interés del " +
-          tasaInteres * 100 +
-          "%"
-      );
+
       const cotizar = {
         Cuotas: cuotasDisponibles,
         Dinero: monto,
@@ -49,6 +43,9 @@ if (edad <= 17 ){
         for (let i = 2; i <= cuotasDisponibles; i++) {
           cuotaElegida.push(i);
         }
+        alert(
+          "¡Felicidades " + persona.nombre + "! Seleccionando " + cuotasDisponibles + " cuotas la taza de interes es de " + tasaInteres * 100 + "%"
+        );
   
         const montosCuotas = cuotaElegida.map(function (numeroCuotas) {
           return monto * tasaInteres / numeroCuotas;
@@ -56,19 +53,17 @@ if (edad <= 17 ){
   
         cuotaElegida.forEach(function (numeroCuotas, index) {
           console.log(
-            "En " +
-              numeroCuotas +
-              " cuotas el valor de cada una sería $" +
-              montosCuotas[index].toFixed(2)
+            "En " + numeroCuotas + " cuotas el valor de cada una sería $" + montosCuotas[index].toFixed(2)
           );
           if (numeroCuotas === cuotasDisponibles) {
-            const cuotaDeseada = {
+            cuotaElegida.push({
               Cuotas: numeroCuotas,
               Valor: montosCuotas[index].toFixed(2),
-            };
-            console.log("Cuota deseada:", cuotaDeseada);
+            });
+            console.log("Cuota deseada:", cuotaElegida[cuotaElegida.length - 1]);
           }
         });
+        console.log("Cuotas elegidas:", cuotaElegida);
       } else {
         console.log("Ingrese valores válidos para monto y cuotas.");
       }
@@ -79,18 +74,49 @@ if (edad <= 17 ){
     }
   
     }   else if(ingresaste2) {
-            alert ("¡Felicidades! Tienes financiación hasta en 24 cuotas!");
-            console.log("Hola " + nombre);
-            for (let i = 2; i <= 24 ; i++ ){
-                let resultado = porcentaje (monto, interes, i);
-                console.log("si elige " + i + " cuotas seran de $" + resultado.toFixed(2));
-            }
-            console.log(nombre +" aguardamos su respuesta");
+        let tasaInteres = tasasInteres[cuotasDisponibles];
+            
+            const cotizar = {
+              Cuotas: cuotasDisponibles,
+              Dinero: monto,
+            };
+            console.log(cotizar);
+            
+            const cuotaElegida = [];
+         if (cuotasDisponibles >= 2 && cuotasDisponibles <= 24) {
+        for (let i = 2; i <= cuotasDisponibles; i++) {
+          cuotaElegida.push(i);
+        }
+        alert (
+          "¡Felicidades " + persona.nombre + "! Seleccionando " + cuotasDisponibles + " cuotas la taza de interes es de " + tasaInteres * 100 + "%"
+        );
+        const montosCuotas = cuotaElegida.map(function (numeroCuotas) {
+          return monto * tasaInteres / numeroCuotas;
+        });
+  
+        cuotaElegida.forEach(function (numeroCuotas, index) {
+          console.log(
+            "En " + numeroCuotas + " cuotas el valor de cada una sería $" + montosCuotas[index].toFixed(2)
+            );
+          if (numeroCuotas === cuotasDisponibles) {
+            cuotaElegida.push({
+              Cuotas: numeroCuotas,
+              Valor: montosCuotas[index].toFixed(2),
+            });
+            console.log("Cuota deseada:", cuotaElegida[cuotaElegida.length - 1]);
+          }
+        });
+        console.log("Cuotas elegidas:", cuotaElegida);
+      } else {
+        console.log("Ingrese valores válidos para monto y cuotas.");
+      }
+  
+      console.log(persona.nombre + " aguardamos su respuesta");
+    } else {
+      console.log("Número de cuotas no válido");
     }
-    function porcentaje (monto , interes , i) {
-        return monto * interes / i;
-    }
-}
+  }
+
 
 
 
