@@ -1,8 +1,6 @@
-
-
-let nombre = prompt ("Ingrese nombre")
-let apellido = prompt ("ingrese apellido")
 let edad = parseInt(prompt ("ingrese su edad"));
+let nombre = document.getElementById('name').value
+let apellido = document.getElementById('apellido').value
 const persona = {
     nombre : nombre,
     apellido : apellido,
@@ -11,14 +9,16 @@ const persona = {
 
 console.log(persona); 
 
-const ingresaste = edad >= 18 && edad <=35;
-const ingresaste2 = edad >= 36;
+
+
+const ingresaste = edad >= 18;
+/*const ingresaste2 = edad >= 36;*/
 
 if (edad <= 17 ){
     alert (" no puede ingresar a la pagina tiene que ser mayor de 18");   
 }   else {
-  var monto = parseInt(prompt("Cuanto dinero necesita sin el simbolo $ ni puntos"));
-  let cuotasDisponibles = parseInt(prompt("cuota deseada"));
+  var monto = document.getElementById('monto').value;
+  let cuotasDisponibles = document.getElementById('cuotas').value;
   const tasasInteres = {
     12: 1.2,
     24: 1.4,
@@ -32,8 +32,8 @@ if (edad <= 17 ){
     if (tasaInteres !== undefined) {
 
       const cotizar = {
-        Cuotas: cuotasDisponibles,
-        Dinero: monto,
+        cuotas: cuotasDisponibles,
+        dinero: monto,
       };
       console.log(cotizar);
   
@@ -43,18 +43,15 @@ if (edad <= 17 ){
         for (let i = 2; i <= cuotasDisponibles; i++) {
           cuotaElegida.push(i);
         }
-        alert(
-          "¡Felicidades " + persona.nombre + "! Seleccionando " + cuotasDisponibles + " cuotas la taza de interes es de " + tasaInteres * 100 + "%"
-        );
+          alert(
+            "¡Felicidades " + persona.nombre + "! Seleccionando " + cuotasDisponibles + " cuotas la taza de interes es de " + tasaInteres * 100 + "%"
+          );
   
         const montosCuotas = cuotaElegida.map(function (numeroCuotas) {
           return monto * tasaInteres / numeroCuotas;
         });
   
         cuotaElegida.forEach(function (numeroCuotas, index) {
-          console.log(
-            "En " + numeroCuotas + " cuotas el valor de cada una sería $" + montosCuotas[index].toFixed(2)
-          );
           if (numeroCuotas === cuotasDisponibles) {
             cuotaElegida.push({
               Cuotas: numeroCuotas,
@@ -63,28 +60,24 @@ if (edad <= 17 ){
             console.log("Cuota deseada:", cuotaElegida[cuotaElegida.length - 1]);
           }
         });
-        console.log("Cuotas elegidas:", cuotaElegida);
       } else {
         console.log("Ingrese valores válidos para monto y cuotas.");
       }
-  
-      console.log(persona.nombre + " aguardamos su respuesta");
+        console.log(persona.nombre + " aguardamos su respuesta");
     } else {
       console.log("Número de cuotas no válido");
     }
-  
-    }   else if(ingresaste2) {
+  } /*else if(ingresaste2) {
         let tasaInteres = tasasInteres[cuotasDisponibles];
-            
-            const cotizar = {
+          const cotizar = {
               Cuotas: cuotasDisponibles,
               Dinero: monto,
-            };
-            console.log(cotizar);
+          };
+          console.log(cotizar);
             
-            const cuotaElegida = [];
-         if (cuotasDisponibles >= 2 && cuotasDisponibles <= 24) {
-        for (let i = 2; i <= cuotasDisponibles; i++) {
+          const cuotaElegida = [];
+  if (cuotasDisponibles >= 2 && cuotasDisponibles <= 24) {
+    for (let i = 2; i <= cuotasDisponibles; i++) {
           cuotaElegida.push(i);
         }
         alert (
@@ -114,8 +107,20 @@ if (edad <= 17 ){
       console.log(persona.nombre + " aguardamos su respuesta");
     } else {
       console.log("Número de cuotas no válido");
-    }
+    }*/
   }
+
+const btn = document.getElementById('btn')
+
+btn.addEventListener('click', function(){
+  const container = document.createElement('article')
+
+const presentacion = `<p>Estimadx ${persona.nombre} ${persona.apellido} : Usted ha elegido </p>`;
+container.innerHTML = presentacion;
+const containerElement = document.getElementById('container');
+containerElement.appendChild(container);
+
+});
 
 
 
