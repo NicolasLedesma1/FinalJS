@@ -28,10 +28,7 @@ label{
     padding: 5px;
 }
 body h1 {
-    padding-left: 40%;
-}
-h2 {
-    padding-left: 40%;
+    text-align: center;
 }
 #btn {
      margin-top: 15px;
@@ -45,5 +42,8 @@ section {
     border: 2px black solid;
     margin-left: 30%;
     margin-right: 30%;
-    padding: 5% ;
+    padding: 2% ;
+}
+#title{
+    align-items: cente;
 }

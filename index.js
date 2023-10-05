@@ -53,24 +53,25 @@ document.addEventListener('DOMContentLoaded', function () {
             container2Element.appendChild(container2);
           } else {
             console.log("Ingrese valores válidos para monto y cuotas.");
-          }
-          console.log(persona.nombre + " aguardamos su respuesta");
+          };
         } else {
           console.log("Número de cuotas no válido");
         }
       }
     }
     const container = document.createElement('article');
-    const presentacion = `<p>Estimadx ${nombre} ${apellido} :   </p>`;
+    const presentacion = `<h2>Estimadx ${nombre} ${apellido} :   </h2>`;
     container.innerHTML = presentacion;
     const containerElement = document.getElementById('container');
     containerElement.appendChild(container);
-    btn.addEventListener ('click',()=> { 
     sessionStorage.setItem('bienvenida' , JSON.stringify(persona))
-    const bienvenida = JSON.parse(localStorage.getItem ('bienvenida'))
+    const bienvenida = JSON.parse(sessionStorage.getItem ('bienvenida'))
+    const titulo = document.getElementById('title');
+    titulo.innerText = `bienvenidx ${bienvenida.nombre}`;
+
     
     
-    })
+    
   });
 });
 
