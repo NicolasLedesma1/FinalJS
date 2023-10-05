@@ -1,126 +1,79 @@
-let edad = parseInt(prompt ("ingrese su edad"));
-let nombre = document.getElementById('name').value
-let apellido = document.getElementById('apellido').value
-const persona = {
-    nombre : nombre,
-    apellido : apellido,
-    edad : edad
-}
+document.addEventListener('DOMContentLoaded', function () {
+  const btn = document.getElementById('btn');
 
-console.log(persona); 
+  btn.addEventListener('click', function () {
+    let nombre = document.getElementById('name').value;
+    let apellido = document.getElementById('apellido').value;
+    let monto = parseFloat(document.getElementById('monto').value);
+    let cuotasDisponibles = document.getElementById('cuotas').value;
+    const persona = {
+      nombre: nombre,
+      apellido: apellido,
+    };
 
+    let edad = parseInt(prompt("Ingrese su edad"));
+    const ingresaste = edad >= 18;
 
-
-const ingresaste = edad >= 18;
-/*const ingresaste2 = edad >= 36;*/
-
-if (edad <= 17 ){
-    alert (" no puede ingresar a la pagina tiene que ser mayor de 18");   
-}   else {
-  var monto = document.getElementById('monto').value;
-  let cuotasDisponibles = document.getElementById('cuotas').value;
-  const tasasInteres = {
-    12: 1.2,
-    24: 1.4,
-    36: 1.6,
-    48: 1.8,
-
-  };
-  console.log(tasasInteres);
-  if (ingresaste) {
-    let tasaInteres = tasasInteres[cuotasDisponibles];
-    if (tasaInteres !== undefined) {
-
-      const cotizar = {
-        cuotas: cuotasDisponibles,
-        dinero: monto,
+    if (edad <= 17) {
+      alert("No puede ingresar a la página, debe ser mayor de 18");
+    } else {
+      const tasasInteres = {
+        12: 1.2,
+        24: 1.4,
+        36: 1.6,
+        48: 1.8,
       };
-      console.log(cotizar);
-  
-      const cuotaElegida = [];
-  
-      if (cuotasDisponibles >= 2 && cuotasDisponibles <= 48) {
-        for (let i = 2; i <= cuotasDisponibles; i++) {
-          cuotaElegida.push(i);
-        }
-          alert(
-            "¡Felicidades " + persona.nombre + "! Seleccionando " + cuotasDisponibles + " cuotas la taza de interes es de " + tasaInteres * 100 + "%"
-          );
-  
-        const montosCuotas = cuotaElegida.map(function (numeroCuotas) {
-          return monto * tasaInteres / numeroCuotas;
-        });
-  
-        cuotaElegida.forEach(function (numeroCuotas, index) {
-          if (numeroCuotas === cuotasDisponibles) {
-            cuotaElegida.push({
-              Cuotas: numeroCuotas,
-              Valor: montosCuotas[index].toFixed(2),
-            });
-            console.log("Cuota deseada:", cuotaElegida[cuotaElegida.length - 1]);
-          }
-        });
-      } else {
-        console.log("Ingrese valores válidos para monto y cuotas.");
-      }
-        console.log(persona.nombre + " aguardamos su respuesta");
-    } else {
-      console.log("Número de cuotas no válido");
-    }
-  } /*else if(ingresaste2) {
-        let tasaInteres = tasasInteres[cuotasDisponibles];
-          const cotizar = {
-              Cuotas: cuotasDisponibles,
-              Dinero: monto,
-          };
-          console.log(cotizar);
-            
+
+      if (ingresaste) {
+        let tasaInteres = tasasInteres[parseInt(cuotasDisponibles)];
+
+        if (tasaInteres !== undefined) {
           const cuotaElegida = [];
-  if (cuotasDisponibles >= 2 && cuotasDisponibles <= 24) {
-    for (let i = 2; i <= cuotasDisponibles; i++) {
-          cuotaElegida.push(i);
-        }
-        alert (
-          "¡Felicidades " + persona.nombre + "! Seleccionando " + cuotasDisponibles + " cuotas la taza de interes es de " + tasaInteres * 100 + "%"
-        );
-        const montosCuotas = cuotaElegida.map(function (numeroCuotas) {
-          return monto * tasaInteres / numeroCuotas;
-        });
-  
-        cuotaElegida.forEach(function (numeroCuotas, index) {
-          console.log(
-            "En " + numeroCuotas + " cuotas el valor de cada una sería $" + montosCuotas[index].toFixed(2)
-            );
-          if (numeroCuotas === cuotasDisponibles) {
-            cuotaElegida.push({
-              Cuotas: numeroCuotas,
-              Valor: montosCuotas[index].toFixed(2),
+
+          if (parseInt(cuotasDisponibles) >= 2 && parseInt(cuotasDisponibles) <= 48) {
+            for (let i = 1; i <= 48; i++) {
+              cuotaElegida.push(i);
+            }
+
+            let mensaje2 = `<p>Cuotas Elegidas: ${cuotasDisponibles}</p>
+                            <p>Monto Elegido: $${monto}</p>`;
+
+            cuotaElegida.forEach(function (numeroCuotas) {
+              if (numeroCuotas === parseInt(cuotasDisponibles)) {
+                const montoCuota = monto * tasaInteres / numeroCuotas;
+                mensaje2 += `<p>Valor de cuota: $${montoCuota.toFixed(0)}</p>`;
+              }
             });
-            console.log("Cuota deseada:", cuotaElegida[cuotaElegida.length - 1]);
+
+            const container2 = document.createElement('article');
+            container2.innerHTML = mensaje2;
+
+            const container2Element = document.getElementById('container2');
+            container2Element.innerHTML = '';
+            container2Element.appendChild(container2);
+          } else {
+            console.log("Ingrese valores válidos para monto y cuotas.");
           }
-        });
-        console.log("Cuotas elegidas:", cuotaElegida);
-      } else {
-        console.log("Ingrese valores válidos para monto y cuotas.");
+          console.log(persona.nombre + " aguardamos su respuesta");
+        } else {
+          console.log("Número de cuotas no válido");
+        }
       }
-  
-      console.log(persona.nombre + " aguardamos su respuesta");
-    } else {
-      console.log("Número de cuotas no válido");
-    }*/
-  }
-
-const btn = document.getElementById('btn')
-
-btn.addEventListener('click', function(){
-  const container = document.createElement('article')
-
-const presentacion = `<p>Estimadx ${persona.nombre} ${persona.apellido} : Usted ha elegido </p>`;
-container.innerHTML = presentacion;
-const containerElement = document.getElementById('container');
-containerElement.appendChild(container);
-
+    }
+    const container = document.createElement('article');
+    const presentacion = `<p>Estimadx ${nombre} ${apellido} :   </p>`;
+    container.innerHTML = presentacion;
+    const containerElement = document.getElementById('container');
+    containerElement.appendChild(container);
+    btn.addEventListener ('click',()=> { 
+    sessionStorage.setItem('bienvenida' , JSON.stringify(persona))
+    const bienvenida = JSON.parse(localStorage.getItem ('bienvenida'))
+    
+    
+    })
+  });
 });
+
 
 
 
