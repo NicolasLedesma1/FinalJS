@@ -46,10 +46,18 @@ section {
     margin-left: 30%;
     margin-right: 30%;
     padding: 2% ;
+    border-radius: 5%;
 }
 #title{
     align-items: center;
 }
 #container {
     text-align: center;
+}
+#date {
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border-radius: 5%;
+    margin: 10px 30% 10px 30%;
+    padding: 10px;
 }

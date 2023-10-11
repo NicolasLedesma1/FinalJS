@@ -78,5 +78,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
+const date = document.getElementById ('date');
+const DateTime = luxon.DateTime;
+const now = DateTime.now();
+
+const container = document.createElement ('div')
+
+container.innerHTML = `<p> Hoy es ${now.toLocaleString(DateTime.DATE_SHORT)}</p>
+                      <p>Son las ${now.toLocaleString(DateTime.TIME_SIMPLE)} </p> `
+
+date.appendChild (container)
+
 
 
