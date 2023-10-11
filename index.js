@@ -26,7 +26,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (cuotaFinal) {
         const valorCuota = (monto * tasasInteres[cuotaFinal]) / cuotasDisponibles;
-        presentacion = `<h2>Estimadx ${nombre} ${apellido} usted abonará ${cuotasDisponibles} cuotas de $ ${valorCuota.toFixed(2)}</h2>`;
+        presentacion = `<h2>Estimadx ${nombre} ${apellido} </h2>
+                        <p>usted abonará ${cuotasDisponibles} cuotas de </p>
+                        <h3>$ ${valorCuota.toFixed(2)}</h3>`;
       } else {
         presentacion = "Monto de cuota no válido";
       }

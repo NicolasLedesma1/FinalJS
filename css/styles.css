@@ -48,5 +48,8 @@ section {
     padding: 2% ;
 }
 #title{
-    align-items: cente;
+    align-items: center;
+}
+#container {
+    text-align: center;
 }
