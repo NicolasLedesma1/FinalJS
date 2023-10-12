@@ -68,12 +68,18 @@ document.addEventListener('DOMContentLoaded', function () {
     const container = document.createElement('article');
     container.innerHTML = presentacion;
     const containerElement = document.getElementById('container');
-    containerElement.appendChild(container);
+    setTimeout(() => {
+      containerElement.appendChild(container);;
+    }, 2000)
+
 /**se almacenan los datos del objeto usuario para hacer las las modificaciones via json y luego se inyectan al html desde ahi */
     sessionStorage.setItem('bienvenida', JSON.stringify(datosUsuario));
     const bienvenida = JSON.parse(sessionStorage.getItem('bienvenida'));
     const titulo = document.getElementById('title');
-    titulo.innerText = `Bienvenidx ${bienvenida.name}`;
+    setTimeout(() => {
+      titulo.innerText = `Bienvenidx ${bienvenida.name}`;
+    }, 100)
+
   });
 
 });
