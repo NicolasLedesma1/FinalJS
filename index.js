@@ -1,8 +1,8 @@
 
 document.addEventListener('DOMContentLoaded', function () {
   const btn = document.getElementById('btn');
-
   btn.addEventListener('click', function () {
+
     let nombre = document.getElementById('name').value;
     let apellido = document.getElementById('apellido').value;
     let monto = parseFloat(document.getElementById('monto').value);
@@ -65,16 +65,15 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    const container = document.createElement('article');
-    container.innerHTML = presentacion;
     const containerElement = document.getElementById('container');
+
     setTimeout(() => {
-      containerElement.appendChild(container);;
+;;        containerElement.innerHTML = presentacion;
     }, 2000)
 
 /**se almacenan los datos del objeto usuario para hacer las las modificaciones via json y luego se inyectan al html desde ahi */
-    sessionStorage.setItem('bienvenida', JSON.stringify(datosUsuario));
-    const bienvenida = JSON.parse(sessionStorage.getItem('bienvenida'));
+    localStorage.setItem('bienvenida', JSON.stringify(datosUsuario));
+    const bienvenida = JSON.parse(localStorage.getItem('bienvenida'));
     const titulo = document.getElementById('title');
     setTimeout(() => {
       titulo.innerText = `Bienvenidx ${bienvenida.name}`;
@@ -88,12 +87,42 @@ const date = document.getElementById ('date');
 const DateTime = luxon.DateTime;
 const now = DateTime.now();
 
-const container = document.createElement ('div')
+const fecha = document.createElement ('div')
 
-container.innerHTML = `<p> Hoy es ${now.toLocaleString(DateTime.DATE_SHORT)}</p>
+fecha.innerHTML = `<p> Hoy es ${now.toLocaleString(DateTime.DATE_SHORT)}</p>
                       <p>Son las ${now.toLocaleString(DateTime.TIME_SIMPLE)} </p> `
 
-date.appendChild (container)
+date.appendChild (fecha)
 
 
 
+const dolarApi = document.getElementById('dolar');
+const baseURL = 'https://api.bluelytics.com.ar/v2/latest';
+
+async function traerDolar() {
+  const respuesta = await fetch(baseURL);
+  const resultado = await respuesta.json();
+
+  const dolarOficial = resultado.oficial.value_buy;
+  const dolarBlue = resultado.blue.value_buy;
+
+  const oficialCard = crearTarjeta('Dólar Oficial', dolarOficial);
+  const blueCard = crearTarjeta('Dólar Blue', dolarBlue);
+
+  dolarApi.appendChild(oficialCard);
+  dolarApi.appendChild(blueCard);
+}
+
+function crearTarjeta(nombre, valor) {
+  const card = document.createElement('article');
+  card.className = 'dolarOficial';
+
+  card.innerHTML = `
+    <h2>${nombre}</h2>
+    <p>Compra: $${valor}</p>
+  `;
+
+  return card;
+}
+
+traerDolar();

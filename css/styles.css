@@ -40,24 +40,39 @@ body h1 {
 
 
 }
-section {
-    font-size: xx-large;
-    border: 2px black solid;
-    margin-left: 30%;
-    margin-right: 30%;
-    padding: 2% ;
-    border-radius: 5%;
+#dolar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-size: x-large;
+    
 }
 #title{
     align-items: center;
 }
+#dolaroficial{  
+        text-align: center;
+        margin: auto;
+        color: black;
+
+        
+}
 #container {
     text-align: center;
+    border: 2px black solid;
+    margin-left: 30%;
+    margin-right: 30%;
+    border-radius: 5%;
+    font-size: x-large;
+
 }
 #date {
     text-align: center;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     border-radius: 5%;
-    margin: 10px 30% 10px 30%;
+    margin-left: 30%;
+    margin-right: 30%;
     padding: 10px;
+    border: 2px black solid;
+    font-size: xx-large;
 }
