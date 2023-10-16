@@ -7,7 +7,7 @@ body {
     background-color: grey;
 }
 .formulario{
-    background-color:   red;
+    background-color:  rgba(2, 61, 2, 0.521);
     max-width: 468px;
     width: auto;
     border-radius: 5px;
@@ -58,6 +58,7 @@ body h1 {
         
 }
 #container {
+    background-color:  rgba(2, 61, 2, 0.521);
     text-align: center;
     border: 2px black solid;
     margin-left: 30%;
@@ -67,6 +68,7 @@ body h1 {
 
 }
 #date {
+    background-color:  rgba(2, 61, 2, 0.521);
     text-align: center;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     border-radius: 5%;
